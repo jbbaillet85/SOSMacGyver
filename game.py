@@ -2,11 +2,15 @@
 #coding utf-8
 
 import pygame
+from constants import *
+from wall import *
 
 pygame.init()
 
-screen = pygame.display.set_mode((900, 900))
+screen = pygame.display.set_mode((SPRITE_HEIGHT, SPRITE_WIDTH))
 pygame.display.set_caption("SOS MacGyver")
+
+create_labyrinth()
 
 pygame.display.flip()
 
