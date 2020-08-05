@@ -3,8 +3,9 @@
 
 import pygame
 from constants import *
-from labyrinth import *
 from hero import *
+from guardian import *
+from items import *
 
 pygame.init()
 
@@ -13,9 +14,13 @@ pygame.display.set_caption("SOS MacGyver")
 
 background = pygame.image.load("pictures/meadow.jpg")
 
-MacGyver = pygame.image.load("pictures/MacGyver32.png").convert_alpha()
-Gardian = pygame.image.load("pictures/Gardien32.png").convert_alpha()
+MacGyver = Hero("pictures/MacGyver32.png", "MacGyver")
+Gardian = Gardian("pictures/Gardien32.png", "Gardian")
+aiguille = Items("pictures/seringue32.png", "aiguille")
+tube = Items("pictures/tube_plastique32.png", "tube")
+ether = Items("pictures/ether32.png", "ether")
 wall = pygame.image.load("pictures/wall32.jpg").convert_alpha()
+
 num_line = 0
 with open("labyrinth.txt", "r") as file:
     for line in file:
@@ -26,9 +31,9 @@ with open("labyrinth.txt", "r") as file:
             if sprite == "W":
                 background.blit(wall,(x, y))
             elif sprite == "S":
-                background.blit(MacGyver,(x,y))
+                background.blit(MacGyver.image,(x,y))
             elif sprite == "A":
-                background.blit(Gardian,(x,y))
+                background.blit(Gardian.image,(x,y))
             num_box += 1
         num_line += 1
 
@@ -43,7 +48,6 @@ while True:
     #Affichages aux nouvelles positions
     screen.blit(background, (0,0))
     
-    #labyrinth.display_labyrinth(screen)
     GROUP_GLOBAL_SPRITES.update()
     GROUP_GLOBAL_SPRITES.draw(screen)
     pygame.display.flip()
