@@ -6,9 +6,9 @@ from constants import *
 
 class Wall(pygame.sprite.Sprite):
     """Create walls for labyrinth"""
-    def __init__(self, x,y):
+    def __init__(self, img_path):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("pictures/wall32.jpg").convert_alpha()
+        self.image = pygame.image.load(img_path).convert_alpha()
         self.rect = self.image.get_rect()
-        self.rect.y = SPRITE_SIZE * y
-        self.rect.x = SPRITE_SIZE * x
+        self.rect.y = SPRITE_SIZE
+        self.rect.x = SPRITE_SIZE
