@@ -2,6 +2,7 @@
 #coding utf-8
 
 import pygame
+import random
 from constants import *
 from hero import *
 from guardian import *
@@ -16,10 +17,11 @@ background = pygame.image.load("pictures/meadow.jpg")
 
 MacGyver = Hero("pictures/MacGyver32.png", "MacGyver")
 Gardian = Gardian("pictures/Gardien32.png", "Gardian")
+wall = pygame.image.load("pictures/wall32.jpg").convert_alpha()
+
 aiguille = Items("pictures/seringue32.png", "aiguille")
 tube = Items("pictures/tube_plastique32.png", "tube")
 ether = Items("pictures/ether32.png", "ether")
-wall = pygame.image.load("pictures/wall32.jpg").convert_alpha()
 
 num_line = 0
 with open("labyrinth.txt", "r") as file:
@@ -34,6 +36,10 @@ with open("labyrinth.txt", "r") as file:
                 background.blit(MacGyver.image,(x,y))
             elif sprite == "A":
                 background.blit(Gardian.image,(x,y))
+            elif sprite == "0":
+                background.blit(aiguille.image, (aiguille.rect.x, aiguille.rect.y))
+                background.blit(tube.image, (tube.rect.x, tube.rect.y))
+                background.blit(ether.image, (ether.rect.x, ether.rect.y))
             num_box += 1
         num_line += 1
 
@@ -56,3 +62,18 @@ while True:
         if event.type == pygame.QUIT:
             False
             pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                MacGyver.move = "L"
+                break
+            elif event.key == pygame.K_RIGHT:
+                MacGyver.move = "R"
+                break
+            elif event.key ==pygame.K_UP:
+                MacGyver.move = "U"
+                break
+            elif event.key == pygame.K_DOWN:
+                MacGyver.move = "D"
+                break
+    
+        MacGyver.update()
