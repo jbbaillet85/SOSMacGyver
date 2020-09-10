@@ -2,6 +2,7 @@
 #coding utf-8
 
 import pygame
+
 from constants import *
 
 class Gardian(pygame.sprite.Sprite):
@@ -11,5 +12,5 @@ class Gardian(pygame.sprite.Sprite):
         self.image = pygame.image.load(img_path).convert_alpha()
         self.name = name
         self.rect = self.image.get_rect()
-        self.rect.y = SPRITE_SIZE
-        self.rect.x = SPRITE_SIZE
+        self.rect.y = SPRITE_SIZE*SPRITE_NUMBER
+        self.rect.x = SPRITE_SIZE*SPRITE_NUMBER
