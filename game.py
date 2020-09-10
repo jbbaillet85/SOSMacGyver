@@ -67,7 +67,6 @@ background.blit(ether.image, random.choice(LIST_EMPTY_POSITIONS))
 LIST_OF_OCCUPIED_POSITIONS.append(ether.position)
 
 GROUP_GLOBAL_SPRITES.add(aiguille, tube, ether)
-
 pygame.display.flip()
 
 #Loop of game
@@ -91,5 +90,6 @@ while not end_game:
                 MacGyver.move("D")
     
         screen.blit(background, (0,0))
+        background.blit(MacGyver.image, (MacGyver.position))
         GROUP_GLOBAL_SPRITES.update()
         pygame.display.flip()

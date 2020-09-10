@@ -2,7 +2,9 @@
 #coding utf-8
 
 import pygame
+
 from constants import *
+
 
 class Hero(pygame.sprite.Sprite):
     """Create hero for labyrinth"""
@@ -10,32 +12,20 @@ class Hero(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(img_path).convert_alpha()
         self.name = name
+        self.Y_LOGIQUE = 0
+        self.X_LOGIQUE = 0
         self.rect = self.image.get_rect()
-        self.rect.y = SPRITE_SIZE
-        self.rect.x = SPRITE_SIZE
-        self.direction = "0"
+        self.rect.y = self.Y_LOGIQUE * SPRITE_SIZE
+        self.rect.x = self.X_LOGIQUE * SPRITE_SIZE
+        self.position = (self.rect.x, self.rect.y)
+        self.direction = "direction"
     
-    def move(self):
-        x_current = self.rect.x
-        y_current = self.rect.y
-        if self.move == "L":
-            self.rect.x -= SPRITE_SIZE
-            self.direction = "0"
-        elif self.move == "R":
-            self.rect.x += SPRITE_SIZE
-            self.direction = "0"
-        elif self.move == "U":
-            self.rect.y -= SPRITE_SIZE
-            self.direction = "0"
-        elif self.move == "D":
-            self.rect.y += SPRITE_SIZE
-            self.direction = "0"
-        
-        liste_collision_wall = pygame.sprite.spritecollide(self, GROUP_WALLS, False)
-        if len(liste_collision_wall)>0:
-            self.rect.x = x_current
-            self.rect.y = y_current
-        
-        liste_collision_items = pygame.sprite.spritecollide(self, GROUP_ITEMS, False)
-        for items in liste_collision_items:
-            items.kill()
+    def move(self, direction):
+        if direction == "L":
+            self.position = ((self.rect.x-SPRITE_SIZE), self.rect.y)
+        elif direction == "R":
+            self.position = ((self.rect.x+SPRITE_SIZE), self.rect.y)
+        elif direction == "U":
+            self.position = (self.rect.x, (self.rect.y-SPRITE_SIZE))
+        elif direction == "D":
+            self.position = (self.rect.x, (self.rect.y+SPRITE_SIZE))

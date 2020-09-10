@@ -14,3 +14,4 @@ class Gardian(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.y = SPRITE_SIZE*SPRITE_NUMBER
         self.rect.x = SPRITE_SIZE*SPRITE_NUMBER
+        self.position = (self.rect.x, self.rect.y)

@@ -12,3 +12,4 @@ class Wall(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.y = SPRITE_SIZE
         self.rect.x = SPRITE_SIZE
+        self.position = (self.rect.x, self.rect.y)
