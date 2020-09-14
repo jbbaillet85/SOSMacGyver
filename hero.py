@@ -18,14 +18,22 @@ class Hero(pygame.sprite.Sprite):
         self.rect.y = self.Y_LOGIQUE * SPRITE_SIZE
         self.rect.x = self.X_LOGIQUE * SPRITE_SIZE
         self.position = (self.rect.x, self.rect.y)
-        self.direction = "direction"
     
     def move(self, direction):
+        """methode move for Hero"""
         if direction == "L":
-            self.position = ((self.rect.x-SPRITE_SIZE), self.rect.y)
+            if self.position in LIST_EMPTY_POSITIONS:
+                self.position = ((self.rect.x-SPRITE_SIZE), self.rect.y)
         elif direction == "R":
             self.position = ((self.rect.x+SPRITE_SIZE), self.rect.y)
         elif direction == "U":
             self.position = (self.rect.x, (self.rect.y-SPRITE_SIZE))
         elif direction == "D":
             self.position = (self.rect.x, (self.rect.y+SPRITE_SIZE))
+        return BACKGROUND.blit(self.image, (self.position))
+    
+    def exit(self, arrival):
+        """methode for win"""
+        if self.position == arrival:
+            print("C'est gagné")
+            pygame.quit()
