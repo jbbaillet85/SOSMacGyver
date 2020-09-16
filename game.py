@@ -3,10 +3,7 @@
 
 import pygame
 
-<<<<<<< HEAD
-=======
 from labyrinth import *
->>>>>>> 0e86eee4f069cd4d465ce9336dbf21e90e9f305c
 from guardian import *
 from hero import *
 from items import *

@@ -21,9 +21,9 @@ class Hero(pygame.sprite.Sprite):
     
     def move(self, direction):
         """methode move for Hero"""
+        position_current = self.position
         if direction == "L":
-            if self.position in LIST_EMPTY_POSITIONS:
-                self.position = ((self.rect.x-SPRITE_SIZE), self.rect.y)
+            self.position = ((self.rect.x-SPRITE_SIZE), self.rect.y)
         elif direction == "R":
             self.position = ((self.rect.x+SPRITE_SIZE), self.rect.y)
         elif direction == "U":
