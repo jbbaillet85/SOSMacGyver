@@ -1,15 +1,12 @@
 #! /usr/bin/env python3
 #coding utf-8
 
-import random
-
 import pygame
 
-from constants import *
-from wall import *
-from hero import *
 from guardian import *
+from hero import *
 from items import *
+from wall import *
 
 pygame.init()
 
