@@ -15,8 +15,8 @@ screen = pygame.display.set_mode((SPRITE_HEIGHT, SPRITE_WIDTH))
 pygame.display.set_caption("SOS MacGyver")
 
 #create of labyrinth
-labyrinth = Labyrinth("pictures/wall32.jpg")
-labyrinth.creat_labyrinth("labyrinth.txt")
+labyrinth = Labyrinth("labyrinth.txt")
+labyrinth.creat_labyrinth("pictures/wall32.jpg")
 
 #creat and placement MacGyver
 MacGyver = Hero("pictures/MacGyver32.png", "MacGyver")
@@ -28,14 +28,14 @@ BACKGROUND.blit(gardian.image, (gardian.position))
 
 #creat and placement items
 aiguille = Items("pictures/seringue32.png", "aiguille")
-BACKGROUND.blit(aiguille.image, random.choice(LIST_EMPTY_POSITIONS))
-LIST_ITEMS.append(aiguille.position)
+aiguille.placement_item(labyrinth.position_empty)
+labyrinth.position_occuped.append(aiguille.position)
 tube = Items("pictures/tube_plastique32.png", "tube")
-BACKGROUND.blit(tube.image, random.choice(LIST_EMPTY_POSITIONS))
-LIST_ITEMS.append(tube.position)
+tube.placement_item(labyrinth.position_empty)
+labyrinth.position_occuped.append(tube.position)
 ether = Items("pictures/ether32.png", "ether")
-BACKGROUND.blit(ether.image, random.choice(LIST_EMPTY_POSITIONS))
-LIST_ITEMS.append(ether.position)
+ether.placement_item(labyrinth.position_empty)
+labyrinth.position_occuped.append(ether.position)
 
 pygame.display.flip()
 
@@ -60,6 +60,6 @@ while not end_game:
             elif event.key == pygame.K_DOWN:
                 MacGyver.move("D")
         
-        MacGyver.exit(gardian.position)
+        labyrinth.end_game(MacGyver.position)
         screen.blit(BACKGROUND, (0,0))
         pygame.display.flip()

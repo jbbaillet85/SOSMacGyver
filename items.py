@@ -13,9 +13,10 @@ class Items(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(img_path)
         self.name = name
-        self.X_LOGIQUE = random.randint(0, SPRITE_NUMBER-1)
-        self.Y_LOGIQUE = random.randint(0, SPRITE_NUMBER-1)
         self.rect = self.image.get_rect()
-        self.rect.y = self.Y_LOGIQUE * SPRITE_SIZE
-        self.rect.x = self.X_LOGIQUE*SPRITE_SIZE
+        self.rect.y = 0
+        self.rect.x = 0
         self.position = (self.rect.y, self.rect.x)
+
+    def placement_item(self, position_empty):
+        BACKGROUND.blit(self.image, random.choice(position_empty))

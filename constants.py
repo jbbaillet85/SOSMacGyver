@@ -14,7 +14,3 @@ BACKGROUND = pygame.image.load("pictures/meadow.jpg")
 GROUP_ITEMS = pygame.sprite.Group()
 GROUP_WALLS = pygame.sprite.Group()
 GROUP_GLOBAL_SPRITES = pygame.sprite.Group()
-
-LIST_EMPTY_POSITIONS= []
-LIST_OF_OCCUPIED_POSITIONS = []
-LIST_ITEMS= []

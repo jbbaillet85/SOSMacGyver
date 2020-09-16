@@ -31,9 +31,3 @@ class Hero(pygame.sprite.Sprite):
         elif direction == "D":
             self.position = (self.rect.x, (self.rect.y+SPRITE_SIZE))
         return BACKGROUND.blit(self.image, (self.position))
-    
-    def exit(self, arrival):
-        """methode for win"""
-        if self.position == arrival:
-            print("C'est gagné")
-            pygame.quit()
