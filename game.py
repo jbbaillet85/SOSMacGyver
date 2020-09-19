@@ -52,14 +52,16 @@ while not end_game:
 
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                MacGyver.move("L")
+                MacGyver.move("L", labyrinth.position_empty)
             elif event.key == pygame.K_RIGHT:
-                MacGyver.move("R")
+                MacGyver.move("R", labyrinth.position_empty)
             elif event.key ==pygame.K_UP:
-                MacGyver.move("U")
+                MacGyver.move("U", labyrinth.position_empty)
             elif event.key == pygame.K_DOWN:
-                MacGyver.move("D")
+                MacGyver.move("D", labyrinth.position_empty)
         
+        MacGyver.blit()
+        print(MacGyver.position)
         labyrinth.end_game(MacGyver.position)
         screen.blit(BACKGROUND, (0,0))
         pygame.display.flip()
