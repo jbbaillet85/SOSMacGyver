@@ -19,4 +19,9 @@ class Items(pygame.sprite.Sprite):
         self.position = (self.rect.y, self.rect.x)
 
     def placement_item(self, position_empty):
-        BACKGROUND.blit(self.image, random.choice(position_empty))
+        self.position = random.choice(position_empty)
+        BACKGROUND.blit(self.image, self.position)
+
+    def colision_items(self, position_hero, set_items):
+        if self.position == position_hero:
+            set_items.add(self.position)

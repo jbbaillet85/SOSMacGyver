@@ -15,6 +15,7 @@ class Labyrinth(pygame.sprite.Sprite):
         self.position_occuped = []
         self.position_start = ()
         self.position_arrival = ()
+        self.set_items = set()
 
     def creat_labyrinth(self, path_wall):
         wall = Wall(path_wall)
@@ -44,5 +45,9 @@ class Labyrinth(pygame.sprite.Sprite):
         
     def end_game(self, position_hero):
         if position_hero == self.position_arrival:
-            print("C'est gagné")
-            pygame.quit()
+            if len(self.set_items) == 3:
+                print("C'est gagné")
+                pygame.quit()
+            else:
+                print('Cest perdu')
+                pygame.quit()

@@ -20,21 +20,29 @@ class Hero(pygame.sprite.Sprite):
     def move(self, direction, position_empty):
         """methode move for Hero"""
         if direction == "L":
-            if self.rect.x >0:
+            if self.rect.x > 0:
                 self.rect.x -= SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
+                if self.position in position_empty:
+                    self.position = (self.rect.x, self.rect.y)
         elif direction == "R":
             if self.rect.x < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.x += SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
+                if self.position in position_empty:
+                    self.position = (self.rect.x, self.rect.y)
         elif direction == "U":
-            if self.rect.y <0:
+            if self.rect.y > 0:
                 self.rect.y -= SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
+                if self.position in position_empty:
+                    self.position = (self.rect.x, self.rect.y)
         elif direction == "D":
             if self.rect.y < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.y += SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
+                if self.position in position_empty:
+                    self.position = (self.rect.x, self.rect.y)
         return self.position
     
     def blit(self):
