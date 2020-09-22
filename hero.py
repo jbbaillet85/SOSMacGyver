@@ -45,6 +45,10 @@ class Hero(pygame.sprite.Sprite):
                     self.position = (self.rect.x, self.rect.y)
         return self.position
     
+
+    def placement_hero (self, position_start):
+        self.position = position_start
+
     def blit(self):
         BACKGROUND.blit(self.image,(self.position))
         

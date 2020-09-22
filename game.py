@@ -20,12 +20,15 @@ labyrinth.creat_labyrinth("pictures/wall32.jpg")
 
 #creat and placement MacGyver
 MacGyver = Hero("pictures/MacGyver32.png", "MacGyver")
-BACKGROUND.blit(MacGyver.image, (MacGyver.position))
+MacGyver.placement_hero(labyrinth.position_start)
+print("position du hero", labyrinth.position_start)
+MacGyver.blit()
 
 #creat and placement gardian
 gardian = Gardian("pictures/Gardien32.png", "Gardian")
+gardian.placement_gardian(labyrinth.position_arrival)
 print("position du méchant", gardian.position)
-BACKGROUND.blit(gardian.image, (gardian.position))
+gardian.blit()
 
 #creat and placement items
 aiguille = Items("pictures/seringue32.png", "aiguille")

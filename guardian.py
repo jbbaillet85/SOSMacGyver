@@ -12,6 +12,12 @@ class Gardian(pygame.sprite.Sprite):
         self.image = pygame.image.load(img_path).convert_alpha()
         self.name = name
         self.rect = self.image.get_rect()
-        self.rect.y = SPRITE_SIZE*(SPRITE_NUMBER-1)
-        self.rect.x = SPRITE_SIZE*(SPRITE_NUMBER-1)
+        self.rect.y = 0
+        self.rect.x = 0
         self.position = (self.rect.x, self.rect.y)
+
+    def placement_gardian (self, position_arrival):
+        self.position = position_arrival
+
+    def blit(self):
+        BACKGROUND.blit(self.image,(self.position))

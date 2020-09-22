@@ -10,6 +10,12 @@ class Wall(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(img_path).convert_alpha()
         self.rect = self.image.get_rect()
-        self.rect.y = SPRITE_SIZE
-        self.rect.x = SPRITE_SIZE
+        self.rect.y = 0
+        self.rect.x = 0
         self.position = (self.rect.x, self.rect.y)
+
+    def placement_wall(self, position_wall):
+        self.position = position_wall
+    
+    def blit_wall(self):
+        BACKGROUND.blit(self.image, self.position)
