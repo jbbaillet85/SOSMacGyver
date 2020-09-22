@@ -17,38 +17,40 @@ class Hero(pygame.sprite.Sprite):
         self.rect.x = 0
         self.position = (self.rect.x, self.rect.y)
     
-    def move(self, direction, position_empty):
+    def move(self, direction, list_position_wall):
         """methode move for Hero"""
         if direction == "L":
             if self.rect.x > 0:
                 self.rect.x -= SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                if self.position in position_empty:
-                    self.position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_position_wall)
         elif direction == "R":
             if self.rect.x < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.x += SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                if self.position in position_empty:
-                    self.position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_position_wall)
         elif direction == "U":
             if self.rect.y > 0:
                 self.rect.y -= SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                if self.position in position_empty:
-                    self.position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_position_wall)
         elif direction == "D":
             if self.rect.y < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.y += SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                if self.position in position_empty:
-                    self.position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_position_wall)
         return self.position
     
 
     def placement_hero (self, position_start):
         self.position = position_start
 
-    def blit(self):
-        BACKGROUND.blit(self.image,(self.position))
+    def blit(self, screen):
+        screen.blit(self.image,(self.position))
+    
+    def colision_walls(self, list_position_wall):
+        if self.position in list_position_wall:
+            self.position = (0,0)
+        return self.position
+
         

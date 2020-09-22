@@ -19,5 +19,5 @@ class Gardian(pygame.sprite.Sprite):
     def placement_gardian (self, position_arrival):
         self.position = position_arrival
 
-    def blit(self):
-        BACKGROUND.blit(self.image,(self.position))
+    def blit(self, screen):
+        screen.blit(self.image,(self.position))

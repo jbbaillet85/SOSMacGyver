@@ -17,5 +17,8 @@ class Wall(pygame.sprite.Sprite):
     def placement_wall(self, position_wall):
         self.position = position_wall
     
-    def blit_wall(self):
-        BACKGROUND.blit(self.image, self.position)
+    def blit_wall(self, screen):
+        screen.blit(self.image, self.position)
+    
+    def list_walls(self, list_walls):
+        list_walls.append(self.position)
