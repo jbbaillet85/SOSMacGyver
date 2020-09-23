@@ -15,7 +15,8 @@ pygame.display.set_caption("SOS MacGyver")
 
 #create of labyrinth
 labyrinth = Labyrinth("labyrinth.txt")
-labyrinth.creat_labyrinth("pictures/wall32.jpg")
+labyrinth.creat_labyrinth()
+labyrinth.blit_labyrinth("pictures/wall32.jpg")
 
 #creat and placement MacGyver
 MacGyver = Hero("pictures/MacGyver32.png", "MacGyver")
@@ -55,22 +56,23 @@ while not end_game:
 
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                MacGyver.move("L", labyrinth.list_positions_walls)
+                MacGyver.move("L", labyrinth.list_positions_walls, labyrinth.position_start)
             elif event.key == pygame.K_RIGHT:
-                MacGyver.move("R", labyrinth.list_positions_walls)
+                MacGyver.move("R", labyrinth.list_positions_walls, labyrinth.position_start)
             elif event.key ==pygame.K_UP:
-                MacGyver.move("U", labyrinth.list_positions_walls)
+                MacGyver.move("U", labyrinth.list_positions_walls, labyrinth.position_start)
             elif event.key == pygame.K_DOWN:
-                MacGyver.move("D", labyrinth.list_positions_walls)
-        
-    MacGyver.blit(screen)
-    print(MacGyver.position)
+                MacGyver.move("D", labyrinth.list_positions_walls, labyrinth.position_start)
 
-    aiguille.colision_items(MacGyver.position, labyrinth.seringue)
-    tube.colision_items(MacGyver.position, labyrinth.seringue)
-    ether.colision_items(MacGyver.position, labyrinth.seringue)
-    print("liste des éléments de la seringue", labyrinth.seringue)
+        MacGyver.clear_hero(screen, black)
+        MacGyver.blit(screen)
+        print("MacGyver est en position: ", MacGyver.position)
 
-    labyrinth.end_game(MacGyver.position)
+        aiguille.colision_items(MacGyver.position, labyrinth.seringue)
+        tube.colision_items(MacGyver.position, labyrinth.seringue)
+        ether.colision_items(MacGyver.position, labyrinth.seringue)
+        print("liste des éléments de la seringue", labyrinth.seringue)
 
-    pygame.display.flip()
+        labyrinth.end_game(MacGyver.position)
+
+        pygame.display.flip()
