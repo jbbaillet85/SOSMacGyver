@@ -25,22 +25,22 @@ class Hero(pygame.sprite.Sprite):
             if self.rect.x > 0:
                 self.rect.x -= SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall, position_start)
+                self.colision_walls(list_position_wall)
         elif direction == "R":
             if self.rect.x < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.x += SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall, position_start)
+                self.colision_walls(list_position_wall)
         elif direction == "U":
             if self.rect.y > 0:
                 self.rect.y -= SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall, position_start)
+                self.colision_walls(list_position_wall)
         elif direction == "D":
             if self.rect.y < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.y += SPRITE_SIZE
                 self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall, position_start)
+                self.colision_walls(list_position_wall)
         return self.position
     
 
@@ -58,8 +58,7 @@ class Hero(pygame.sprite.Sprite):
         self.position_previous = self.list_positions_hero[-2]
         screen.blit(black, self.position_previous)
     
-    def colision_walls(self, list_position_wall, position_start):
+    def colision_walls(self, list_position_wall):
         if self.position in list_position_wall:
-            self.position = (position_start)
+            self.position = self.list_positions_hero[-1]
         return self.position
-        

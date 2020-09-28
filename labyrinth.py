@@ -52,5 +52,7 @@ class Labyrinth(pygame.sprite.Sprite):
         if position_hero == self.position_arrival:
             if len(self.seringue) == 3:
                 print("C'est gagné")
+                screen.blit(win, self.position_start)
             else:
                 print('Cest perdu')
+                screen.blit(lost, self.position_start)
