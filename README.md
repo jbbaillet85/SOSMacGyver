@@ -22,6 +22,9 @@ Fonctionnalités du jeux:
 - Il récupèrera un objet simplement en se déplaçant dessus.
 - Le programme s'arrête uniquement si MacGyver a bien récupéré tous les objets et a trouvé la sortie du labyrinthe. S'il n'a pas tous les objets et qu'il se présente devant le garde, il meurt (la vie est cruelle pour les héros).
 
+Pour installer le jeux:
+
+- nécéssite python
 
 Créer un environnement virtuel:
 windows: py -3.8 -m venv venv
@@ -33,3 +36,9 @@ mac/linux: source/bin/activate
 
 Installer la dépendance pygame:
 pip3 install -r requirements.txt
+
+Lancer le programme:
+windows: python game.py
+mac/linux: python3 game.py
+
+et passer un bon moment.
