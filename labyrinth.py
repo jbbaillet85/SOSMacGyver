@@ -1,11 +1,10 @@
 #! /usr/bin/env python3
-#coding utf-8
+# coding utf-8
 
 import pygame
 
-from wall import *
-
-from constants import *
+from wall import*
+from constants import*
 
 class Labyrinth(pygame.sprite.Sprite):
     def __init__(self, path_structure):
@@ -14,7 +13,7 @@ class Labyrinth(pygame.sprite.Sprite):
         self.position = (0,0)
         self.position_wall = (0,0)
         self.list_positions_walls = []
-        self.position_empty = []
+        self.list_positions_empty = []
         self.position_start = ()
         self.position_arrival = ()
         self.seringue = set()
@@ -34,11 +33,13 @@ class Labyrinth(pygame.sprite.Sprite):
                         self.list_positions_walls.append(self.position_wall)
                     elif sprite == "S":
                         self.position_start = self.position
+                        self.list_positions_empty.append(self.position_start)
                     elif sprite == "A":
                         self.position_arrival = self.position
+                        self.list_positions_empty.append(self.position_arrival)
                     elif sprite == "0":
                         position_empty = self.position
-                        self.position_empty.append(position_empty)
+                        self.list_positions_empty.append(position_empty)
                     X_LOGIC += 1
                 Y_LOGIC += 1
     
@@ -47,6 +48,12 @@ class Labyrinth(pygame.sprite.Sprite):
             wall = Wall(path_wall)
             wall.placement_wall(position_wall)
             wall.blit_wall(screen)
+    
+    def counter_items(self):
+        score = f"{len(self.seringue)}  items ramassés"
+        myfont = pygame.font.SysFont("monospace", 16)
+        counter_items = myfont.render(score, 1, (255, 255, 0))
+        screen.blit(counter_items, (self.position_start))
 
     def end_game(self, position_hero):
         if position_hero == self.position_arrival:

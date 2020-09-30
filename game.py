@@ -32,13 +32,13 @@ gardian.blit(screen)
 
 #creat and placement items
 aiguille = Items("pictures/seringue32.png", "aiguille")
-aiguille.placement_item(screen, labyrinth.position_empty)
+aiguille.placement_item(screen, labyrinth.list_positions_empty)
 print("position de l'aiguille", aiguille.position)
 tube = Items("pictures/tube_plastique32.png", "tube")
-tube.placement_item(screen, labyrinth.position_empty)
+tube.placement_item(screen, labyrinth.list_positions_empty)
 print("position du tube", tube.position)
 ether = Items("pictures/ether32.png", "ether")
-ether.placement_item(screen, labyrinth.position_empty)
+ether.placement_item(screen, labyrinth.list_positions_empty)
 print("position de l'ether", ether.position)
 
 pygame.display.flip()
@@ -56,13 +56,13 @@ while not end_game:
 
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                MacGyver.move("L", labyrinth.list_positions_walls, labyrinth.position_start)
+                MacGyver.move("L", labyrinth.list_positions_empty)
             elif event.key == pygame.K_RIGHT:
-                MacGyver.move("R", labyrinth.list_positions_walls, labyrinth.position_start)
+                MacGyver.move("R", labyrinth.list_positions_empty)
             elif event.key ==pygame.K_UP:
-                MacGyver.move("U", labyrinth.list_positions_walls, labyrinth.position_start)
+                MacGyver.move("U", labyrinth.list_positions_empty)
             elif event.key == pygame.K_DOWN:
-                MacGyver.move("D", labyrinth.list_positions_walls, labyrinth.position_start)
+                MacGyver.move("D", labyrinth.list_positions_empty)
 
         MacGyver.clear_hero(screen, black)
         MacGyver.blit(screen)
@@ -72,6 +72,8 @@ while not end_game:
         tube.colision_items(MacGyver.position, labyrinth.seringue)
         ether.colision_items(MacGyver.position, labyrinth.seringue)
         print("liste des éléments de la seringue", labyrinth.seringue)
+
+        labyrinth.counter_items()
 
         labyrinth.end_game(MacGyver.position)
 

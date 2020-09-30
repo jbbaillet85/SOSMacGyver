@@ -18,32 +18,31 @@ class Hero(pygame.sprite.Sprite):
         self.position = (self.rect.x, self.rect.y)
         self.list_positions_hero = [self.position, self.position]
         self.position_previous = self.list_positions_hero[-2]
+        self.new_position = ()
     
-    def move(self, direction, list_position_wall, position_start):
+    def move(self, direction, list_positions_empty):
         """methode move for Hero"""
         if direction == "L":
             if self.rect.x > 0:
                 self.rect.x -= SPRITE_SIZE
-                self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall)
+                self.new_position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_positions_empty)
         elif direction == "R":
             if self.rect.x < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.x += SPRITE_SIZE
-                self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall)
+                self.new_position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_positions_empty)
         elif direction == "U":
             if self.rect.y > 0:
                 self.rect.y -= SPRITE_SIZE
-                self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall)
+                self.new_position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_positions_empty)
         elif direction == "D":
             if self.rect.y < SPRITE_SIZE*(SPRITE_NUMBER-1):
                 self.rect.y += SPRITE_SIZE
-                self.position = (self.rect.x, self.rect.y)
-                self.colision_walls(list_position_wall)
-        return self.position
+                self.new_position = (self.rect.x, self.rect.y)
+                self.colision_walls(list_positions_empty)
     
-
     def placement_hero (self, position_start):
         self.position = position_start
 
@@ -58,7 +57,7 @@ class Hero(pygame.sprite.Sprite):
         self.position_previous = self.list_positions_hero[-2]
         screen.blit(black, self.position_previous)
     
-    def colision_walls(self, list_position_wall):
-        if self.position in list_position_wall:
-            self.position = self.list_positions_hero[-1]
+    def colision_walls(self, list_positions_empty):
+        if self.new_position in list_positions_empty:
+            self.position = self.new_position
         return self.position
