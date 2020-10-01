@@ -5,8 +5,6 @@ import random
 
 import pygame
 
-from constants import screen
-
 
 class Items (pygame.sprite.Sprite):
     """Create items for labyrinth"""

@@ -3,8 +3,8 @@
 
 import pygame
 
-from wall import*
-from constants import*
+from wall import Wall
+from constants import SPRITE_SIZE, screen, win, lost
 
 
 class Labyrinth (pygame.sprite.Sprite):

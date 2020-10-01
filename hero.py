@@ -3,7 +3,7 @@
 
 import pygame
 
-from constants import *
+from constants import SPRITE_SIZE, SPRITE_NUMBER
 
 
 class Hero (pygame.sprite.Sprite):
@@ -19,7 +19,7 @@ class Hero (pygame.sprite.Sprite):
         self.list_positions_hero = [self.position, self.position]
         self.position_previous = self.list_positions_hero[-2]
         self.new_position = ()
-    
+
     def move(self, direction, list_positions_empty):
         """methode move for Hero"""
         if direction == "L":

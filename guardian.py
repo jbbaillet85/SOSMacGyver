@@ -3,8 +3,6 @@
 
 import pygame
 
-from constants import screen
-
 
 class Gardian (pygame.sprite.Sprite):
     """Create gardian for labyrinth"""

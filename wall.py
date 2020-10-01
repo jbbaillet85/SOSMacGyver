@@ -2,7 +2,6 @@
 # coding utf-8
 
 import pygame
-from constants import screen
 
 
 class Wall(pygame.sprite.Sprite):

@@ -3,11 +3,11 @@
 
 import pygame
 
-from labyrinth import *
-from guardian import *
-from hero import *
-from items import *
-from wall import *
+from labyrinth import Labyrinth
+from guardian import Gardian
+from hero import Hero
+from items import Items
+from constants import screen, black
 
 pygame.init()
 
