@@ -1,13 +1,14 @@
-#! /usr/bin/env python3
-#coding utf-8
+# ! /usr/bin/env python3
+# coding utf-8
 
 import random
 
 import pygame
 
-from constants import *
+from constants import screen
 
-class Items(pygame.sprite.Sprite):
+
+class Items (pygame.sprite.Sprite):
     """Create items for labyrinth"""
     def __init__(self, img_path, name):
         pygame.sprite.Sprite.__init__(self)

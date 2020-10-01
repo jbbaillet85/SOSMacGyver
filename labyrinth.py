@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+# ! /usr/bin/env python3
 # coding utf-8
 
 import pygame
@@ -6,12 +6,13 @@ import pygame
 from wall import*
 from constants import*
 
-class Labyrinth(pygame.sprite.Sprite):
+
+class Labyrinth (pygame.sprite.Sprite):
     def __init__(self, path_structure):
         pygame.sprite.Sprite.__init__(self)
         self.structure = path_structure
-        self.position = (0,0)
-        self.position_wall = (0,0)
+        self.position = (0, 0)
+        self.position_wall = (0, 0)
         self.list_positions_walls = []
         self.list_positions_empty = []
         self.position_start = ()
@@ -42,13 +43,13 @@ class Labyrinth(pygame.sprite.Sprite):
                         self.list_positions_empty.append(position_empty)
                     X_LOGIC += 1
                 Y_LOGIC += 1
-    
+
     def blit_labyrinth(self, path_wall):
         for position_wall in self.list_positions_walls:
             wall = Wall(path_wall)
             wall.placement_wall(position_wall)
             wall.blit_wall(screen)
-    
+
     def counter_items(self):
         score = f"{len(self.seringue)}  items ramassés"
         myfont = pygame.font.SysFont("monospace", 16)

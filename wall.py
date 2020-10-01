@@ -1,8 +1,9 @@
-#! /usr/bin/env python3
-#coding utf-8
+# ! /usr/bin/env python3
+# coding utf-8
 
 import pygame
-from constants import *
+from constants import screen
+
 
 class Wall(pygame.sprite.Sprite):
     """Create walls for labyrinth"""
@@ -16,9 +17,9 @@ class Wall(pygame.sprite.Sprite):
 
     def placement_wall(self, position_wall):
         self.position = position_wall
-    
+
     def blit_wall(self, screen):
         screen.blit(self.image, self.position)
-    
+
     def list_walls(self, list_walls):
         list_walls.append(self.position)

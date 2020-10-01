@@ -1,11 +1,12 @@
-#! /usr/bin/env python3
-#coding utf-8
+# ! /usr/bin/env python3
+# coding utf-8
 
 import pygame
 
-from constants import *
+from constants import screen
 
-class Gardian(pygame.sprite.Sprite):
+
+class Gardian (pygame.sprite.Sprite):
     """Create gardian for labyrinth"""
     def __init__(self, img_path, name):
         pygame.sprite.Sprite.__init__(self)
@@ -16,8 +17,8 @@ class Gardian(pygame.sprite.Sprite):
         self.rect.x = 0
         self.position = (self.rect.x, self.rect.y)
 
-    def placement_gardian (self, position_arrival):
+    def placement_gardian(self, position_arrival):
         self.position = position_arrival
 
     def blit(self, screen):
-        screen.blit(self.image,(self.position))
+        screen.blit(self.image, (self.position))
