@@ -73,7 +73,7 @@ while not end_game:
         ether.colision_items(MacGyver.position, labyrinth.seringue)
         print("liste des éléments de la seringue", labyrinth.seringue)
 
-        labyrinth.counter_items()
+        labyrinth.counter_items(black)
 
         labyrinth.end_game(MacGyver.position)
 

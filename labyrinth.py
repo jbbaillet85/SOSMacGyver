@@ -17,6 +17,7 @@ class Labyrinth (pygame.sprite.Sprite):
         self.list_positions_empty = []
         self.position_start = ()
         self.position_arrival = ()
+        self.position_information = ()
         self.seringue = set()
 
     def creat_labyrinth(self):
@@ -41,6 +42,8 @@ class Labyrinth (pygame.sprite.Sprite):
                     elif sprite == "0":
                         position_empty = self.position
                         self.list_positions_empty.append(position_empty)
+                    elif sprite == "I":
+                        self.position_information = self.position
                     X_LOGIC += 1
                 Y_LOGIC += 1
 
@@ -50,11 +53,12 @@ class Labyrinth (pygame.sprite.Sprite):
             wall.placement_wall(position_wall)
             wall.blit_wall(screen)
 
-    def counter_items(self):
+    def counter_items(self, black):
         score = f"{len(self.seringue)}  items ramassés"
         myfont = pygame.font.SysFont("monospace", 16)
         counter_items = myfont.render(score, 1, (255, 255, 0))
-        screen.blit(counter_items, (self.position_start))
+        screen.blit(black, (self.position_information))
+        screen.blit(counter_items, (self.position_information))
 
     def end_game(self, position_hero):
         if position_hero == self.position_arrival:
