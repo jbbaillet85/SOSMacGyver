@@ -54,7 +54,7 @@ class Labyrinth (pygame.sprite.Sprite):
             wall.blit_wall(screen)
 
     def counter_items(self, black):
-        score = f"{len(self.seringue)}  items ramassés"
+        score = f"{len(self.seringue)}  items ramassés sur 3"
         myfont = pygame.font.SysFont("monospace", 16)
         counter_items = myfont.render(score, 1, (255, 255, 0))
         screen.blit(black, (self.position_information))
