@@ -1,12 +1,12 @@
 # ! /usr/bin/env python3
-# coding utf-8
+# # -*- coding: utf8 -*-
 
 import pygame
 
 SPRITE_SIZE = 32
 SPRITE_NUMBER = 16
 SPRITE_WIDTH = SPRITE_SIZE*SPRITE_NUMBER
-SPRITE_HEIGHT = SPRITE_SIZE*(SPRITE_NUMBER-1)
+SPRITE_HEIGHT = SPRITE_SIZE*(SPRITE_NUMBER+1)
 
 screen = pygame.display.set_mode((SPRITE_HEIGHT, SPRITE_WIDTH))
 black = pygame.image.load("pictures/black.png").convert_alpha()

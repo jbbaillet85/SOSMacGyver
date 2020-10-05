@@ -1,5 +1,5 @@
 # ! /usr/bin/env python3
-# coding utf-8
+# # -*- coding: utf8 -*-
 
 import pygame
 
@@ -52,6 +52,9 @@ class Labyrinth (pygame.sprite.Sprite):
             wall = Wall(path_wall)
             wall.placement_wall(position_wall)
             wall.blit_wall(screen)
+
+    def next_position_valide(self, next_position):
+        return next_position not in self.list_positions_walls
 
     def counter_items(self, black):
         score = f"{len(self.seringue)}  items ramassés sur 3"
