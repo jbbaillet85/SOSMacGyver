@@ -35,10 +35,8 @@ class Labyrinth (pygame.sprite.Sprite):
                         self.list_positions_walls.append(self.position_wall)
                     elif sprite == "S":
                         self.position_start = self.position
-                        self.list_positions_empty.append(self.position_start)
                     elif sprite == "A":
                         self.position_arrival = self.position
-                        self.list_positions_empty.append(self.position_arrival)
                     elif sprite == "0":
                         position_empty = self.position
                         self.list_positions_empty.append(position_empty)

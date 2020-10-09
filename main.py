@@ -1,83 +1,86 @@
 # ! /usr/bin/env python3
 # # -*- coding: utf8 -*-
 
-import pygame
+def main():
 
-from labyrinth import Labyrinth
-from guardian import Gardian
-from hero import Hero
-from items import Items
-from constants import screen, black
+    import pygame
 
-pygame.init()
+    from labyrinth import Labyrinth
+    from guardian import Gardian
+    from hero import Hero
+    from items import Items
+    from constants import screen, black
 
-pygame.display.set_caption("SOS MacGyver")
+    pygame.init()
 
-# create of labyrinth
-labyrinth = Labyrinth("labyrinth.txt")
-labyrinth.creat_labyrinth()
-labyrinth.blit_labyrinth("pictures/wall32.jpg")
+    pygame.display.set_caption("SOS MacGyver")
 
-# creat and placement MacGyver
-MacGyver = Hero("pictures/MacGyver32.png", "MacGyver")
-MacGyver.placement_hero(labyrinth.position_start)
-print("position du hero", labyrinth.position_start)
-MacGyver.blit(screen)
+    # create of labyrinth
+    labyrinth = Labyrinth("labyrinth.txt")
+    labyrinth.creat_labyrinth()
+    labyrinth.blit_labyrinth("pictures/wall32.jpg")
 
-# creat and placement gardian
-gardian = Gardian("pictures/Gardien32.png", "Gardian")
-gardian.placement_gardian(labyrinth.position_arrival)
-print("position du méchant", gardian.position)
-gardian.blit(screen)
+    # creat and placement MacGyver
+    MacGyver = Hero("pictures/MacGyver32.png", "MacGyver")
+    MacGyver.placement_hero(labyrinth.position_start)
+    print("position du hero", labyrinth.position_start)
+    MacGyver.blit(screen)
 
-# creat and placement items
-aiguille = Items("pictures/seringue32.png", "aiguille")
-aiguille.placement_item(screen, labyrinth.list_positions_empty)
-print("position de l'aiguille", aiguille.position)
-tube = Items("pictures/tube_plastique32.png", "tube")
-tube.placement_item(screen, labyrinth.list_positions_empty)
-print("position du tube", tube.position)
-ether = Items("pictures/ether32.png", "ether")
-ether.placement_item(screen, labyrinth.list_positions_empty)
-print("position de l'ether", ether.position)
+    # creat and placement gardian
+    gardian = Gardian("pictures/Gardien32.png", "Gardian")
+    gardian.placement_gardian(labyrinth.position_arrival)
+    print("position du méchant", gardian.position)
+    gardian.blit(screen)
 
-pygame.display.flip()
+    # creat and placement items
+    aiguille = Items("pictures/seringue32.png", "aiguille")
+    aiguille.placement_item(screen, labyrinth.list_positions_empty)
+    print("position de l'aiguille", aiguille.position)
+    tube = Items("pictures/tube_plastique32.png", "tube")
+    tube.placement_item(screen, labyrinth.list_positions_empty)
+    print("position du tube", tube.position)
+    ether = Items("pictures/ether32.png", "ether")
+    ether.placement_item(screen, labyrinth.list_positions_empty)
+    print("position de l'ether", ether.position)
 
-# Loop of game
-end_game = False
+    pygame.display.flip()
 
-while not end_game:
+    # Loop of game
+    end_game = False
 
-    # loop evenements
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            end_game = True
-            pygame.quit()
+    while not end_game:
 
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                MacGyver.move("L", labyrinth)
-            elif event.key == pygame.K_RIGHT:
-                MacGyver.move("R", labyrinth)
-            elif event.key == pygame.K_UP:
-                MacGyver.move("U", labyrinth)
-            elif event.key == pygame.K_DOWN:
-                MacGyver.move("D", labyrinth)
+        # loop evenements
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                end_game = True
+                pygame.quit()
 
-        MacGyver.clear_hero(screen, black)
-        MacGyver.blit(screen)
-        print("MacGyver est en position: ", MacGyver.position)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    MacGyver.move("L", labyrinth)
+                elif event.key == pygame.K_RIGHT:
+                    MacGyver.move("R", labyrinth)
+                elif event.key == pygame.K_UP:
+                    MacGyver.move("U", labyrinth)
+                elif event.key == pygame.K_DOWN:
+                    MacGyver.move("D", labyrinth)
 
-        aiguille.colision_items(MacGyver.position, labyrinth.seringue)
-        tube.colision_items(MacGyver.position, labyrinth.seringue)
-        ether.colision_items(MacGyver.position, labyrinth.seringue)
-        print("liste des éléments de la seringue", labyrinth.seringue)
+            MacGyver.clear_hero(screen, black)
+            MacGyver.blit(screen)
+            print("MacGyver est en position: ", MacGyver.position)
 
-        labyrinth.counter_items(black)
+            aiguille.colision_items(MacGyver.position, labyrinth.seringue)
+            tube.colision_items(MacGyver.position, labyrinth.seringue)
+            ether.colision_items(MacGyver.position, labyrinth.seringue)
+            print("liste des éléments de la seringue", labyrinth.seringue)
 
-        labyrinth.end_game(MacGyver.position)
+            labyrinth.counter_items(black)
 
-        pygame.display.flip()
+            labyrinth.end_game(MacGyver.position)
+
+            pygame.display.flip()
+
 
 if __name__ == "__main__":
     main()

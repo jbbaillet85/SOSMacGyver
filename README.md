@@ -27,8 +27,8 @@ Pour installer le jeux:
 - nécéssite python
 
 Créer un environnement virtuel:
-windows: py -3.8 -m venv venv
-mac/linux: python3 -m venv venv
+windows: py -3.8 -m venv env
+mac/linux: python3 -m venv env
 
 Activer l'environement virtuel:
 windows: source venv\Scripts\activate
@@ -38,7 +38,7 @@ Installer la dépendance pygame:
 pip3 install -r requirements.txt
 
 Lancer le programme:
-windows: python game.py
-mac/linux: python3 game.py
+windows: python main.py
+mac/linux: python3 main.py
 
 et passer un bon moment.
