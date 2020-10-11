@@ -18,7 +18,6 @@ class Hero (pygame.sprite.Sprite):
         self.position = (self.rect.x, self.rect.y)
         self.list_positions_hero = [self.position, self.position]
         self.position_previous = self.list_positions_hero[-2]
-        self.new_position = ()
 
     def move(self, direction, labyrinth):
         """methode move for Hero"""
